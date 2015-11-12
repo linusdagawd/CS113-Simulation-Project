@@ -46,7 +46,7 @@ myimage = dw.loadImage("cat.bmp")
 #
 def updateDisplay(state):
     dw.fill(dw.black)
-    dw.draw(myimage, (state[0], height/2))
+    dw.draw(myimage, (state[0], state[2]))
 
 
 ################################################################
@@ -58,12 +58,12 @@ def updateDisplay(state):
 #
 # state -> state
 def updateState(state):
-    return((state[0]+state[1],state[1]))
+    return((state[0]+state[1], state[1], state[2]+state[3], state[3]))
 
 ################################################################
 
 # Terminate the simulation when the x coord reaches the screen edge,
-# that is, when pos is less then zero or greater than the screen width
+# that is, when pos is lxess then zero or greater than the screen width
 # state -> bool
 def endState(state):
     if (state[0] > width or state[0] < 0):
@@ -92,7 +92,7 @@ def handleEvent(state, event):
             newState = -1
         else:
             newState = 1   
-        return((state[0],newState))
+        return((state[0], newState, state[2], state[3]))
     else:
         return(state)
 
@@ -101,7 +101,7 @@ def handleEvent(state, event):
 # World state will be single x coordinate at left edge of world
 
 # The cat starts at the left, moving right 
-initState = (0,1)
+initState = (0, 1, height/2, 1)
 
 # Run the simulation no faster than 60 frames per second
 frameRate = 60
@@ -109,3 +109,6 @@ frameRate = 60
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
             endState, frameRate)
+
+
+
