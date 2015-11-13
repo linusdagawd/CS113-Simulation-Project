@@ -66,7 +66,7 @@ def updateState(state):
 # that is, when pos is lxess then zero or greater than the screen width
 # state -> bool
 def endState(state):
-    if (state[0] > width or state[0] < 0):
+    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0):
         return True
     else:
         return False
