@@ -87,13 +87,17 @@ def endState(state):
 # state -> event -> state
 #
 def handleEvent(state, event):  
-#    print("Handling event: " + str(event))
+    # print("Handling event: " + str(event))
     if (event.type == pg.MOUSEBUTTONDOWN):
-        if (state[1]) == 1:
-            newState = -1
+        if (state[1]) == randint (1, 5):
+            newState = - (randint (1, 5))
         else:
-            newState = 1   
-        return((state[0], newState, state[2], state[3]))
+            newState = (randint (1, 5))
+        if (state[3]) == randint (1, 5):
+            newState3 = -(randint (1, 5))
+        else:
+            newState3 = (randint (1, 5))
+        return((state[0], newState, state[2], newState3))
     else:
         return(state)
 
@@ -102,7 +106,7 @@ def handleEvent(state, event):
 # World state will be single x coordinate at left edge of world
 
 # The cat starts at the left, moving right 
-initState = (randint (0, 499)), (randint(1, 5)), (randint (0, 499)), (randint(1, 5))
+initState = (randint (125, 375)), (randint(1, 5)), (randint (125, 375)), (randint(1, 5))
 
 # Run the simulation no faster than 60 frames per second
 frameRate=60
