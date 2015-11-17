@@ -32,14 +32,15 @@ from random import randint
 
 # Initialize world
 name = "Cat Fun. Press the mouse (but not too fast)!"
-width = 500
-height = 500
+width = 1000
+height = 700
 rw.newDisplay(width, height, name)
 
 ################################################################
 
 # Display the state by drawing a cat at that x coordinate
 myimage = dw.loadImage("cat.bmp")
+secondimage = dw.loadImage("cat.bmp")
 
 # state -> image (IO)
 # draw the cat halfway up the screen (height/2) and at the x
@@ -48,6 +49,7 @@ myimage = dw.loadImage("cat.bmp")
 def updateDisplay(state):
     dw.fill(dw.black)
     dw.draw(myimage, (state[0], state[2]))
+    dw.draw(secondimage, (state[4], state[6]))
 
 
 ################################################################
@@ -59,7 +61,7 @@ def updateDisplay(state):
 #
 # state -> state
 def updateState(state):
-    return((state[0]+state[1], state[1], state[2]+state[3], state[3]))
+    return(state[0]+state[1], state[1], state[2]+state[3], state[3], state[4]+state[5], state[5], state[6]+state[7], state[7])
 
 ################################################################
 
@@ -67,7 +69,7 @@ def updateState(state):
 # that is, when pos is lxess then zero or greater than the screen width
 # state -> bool
 def endState(state):
-    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0):
+    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (state[4] > width or state[4] < 0) or (state[6] > height or state[6] < 0):
         return True
     else:
         return False
@@ -97,7 +99,15 @@ def handleEvent(state, event):
             newState3 = -(randint (1, 5))
         else:
             newState3 = (randint (1, 5))
-        return((state[0], newState, state[2], newState3))
+        if (state[5]) == randint (1, 5):
+            newState5 = -(randint (1, 5))
+        else:
+            newState5 = (randint (1, 5))
+        if (state[7]) == randint (1, 5):
+            newState7 = -(randint (1, 5))
+        else:
+            newState7 = (randint (1, 5))
+        return((state[0], newState, state[2], newState3, state[4], newState5, state[6], newState7))
     else:
         return(state)
 
@@ -105,11 +115,14 @@ def handleEvent(state, event):
 
 # World state will be single x coordinate at left edge of world
 
-# The cat starts at the left, moving right 
-initState = (randint (125, 375)), (randint(1, 5)), (randint (125, 375)), (randint(1, 5))
+# The cat starts at the left, moving right
 
-# Run the simulation no faster than 60 frames per second
-frameRate=60
+initState = ((randint (125, 375)), (randint(1, 5)), (randint (125,
+375)), (randint(1, 5)), (randint (125, 375)), (randint(1, 5)),
+(randint (125, 375)), (randint(1, 5)))
+
+# Run the sixmulation no faster than 60 frames per second
+frameRate=30
 
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
