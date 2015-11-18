@@ -73,7 +73,7 @@ def endState(state):
        # return True
     #else:
         #return False
-    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0):
+    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (state[4] > height or state[4] < 0):
         return True
     else:
         return False
@@ -100,18 +100,13 @@ def handleEvent(state, event):
     if (event.type == pg.KEYDOWN):
         if (event.key == pg.K_DOWN):
             newState3 = state[3] + 1
-    
-    #if (event.type == pg.KEYDOWN):
-       #newState3 = state[3] + 1
-       # if (state[5]) == randint (1, 3):
-        #    newState5 = -(randint (1, 3))
-       # else:
-       #     newState5 = (randint (1, 3))
-       # if (state[7]) == randint (1, 3):
-        #    newState7 = -(randint (1, 3))
-       # else:
-        #    newState7 = (randint (1, 3))
-        return((state[0], state[1], state[2], newState3, state[4], state[5]))
+    if (event.type == pg.KEYDOWN):
+        if (event.key == pg.K_w):
+            newState5 = state[5] - 1
+    if (event.type == pg.KEYDOWN):
+        if (event.key == pg.K_s):
+            newState5 = state[5] + 1
+        return(state[0], state[1], state[2], newState3, state[4], newState5)
     else:
         return(state)
 
@@ -122,7 +117,7 @@ def handleEvent(state, event):
 # The cat starts at the left, moving right
 
 initState = ((randint (125, 375)), (randint(1, 3)), (randint (125,
-375)), (randint(1, 3)), height/2, (randint(1, 6))
+375)), (randint(1, 3)), height/2, (randint(1, 3)))
 
 # Run the sixmulation no faster than 60 frames per second
 frameRate=60
