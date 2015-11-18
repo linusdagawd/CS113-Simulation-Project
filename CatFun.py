@@ -49,7 +49,7 @@ secondimage = dw.loadImage("cat.bmp")
 def updateDisplay(state):
     dw.fill(dw.black)
     dw.draw(myimage, (state[0], state[2]))
-    dw.draw(secondimage, (state[4], state[6]))
+    dw.draw(secondimage, (750, state[4]))
 
 
 ################################################################
@@ -61,7 +61,7 @@ def updateDisplay(state):
 #
 # state -> state
 def updateState(state):
-    return(state[0]+state[1], state[1], state[2]+state[3], state[3], state[4]+state[5], state[5], state[6]+state[7], state[7])
+    return(state[0]+state[1], state[1], state[2]+state[3], state[3], state[4] + state[5], state[5])
 
 ################################################################
 
@@ -69,7 +69,11 @@ def updateState(state):
 # that is, when pos is less then zero or greater than the screen width
 # state -> bool
 def endState(state):
-    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (state[4] > width or state[4] < 0) or (state[6] > height or state[6] < 0):
+    #if (state[0] == width) and (state[2] == state[4]):
+       # return True
+    #else:
+        #return False
+    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0):
         return True
     else:
         return False
@@ -107,7 +111,7 @@ def handleEvent(state, event):
         #    newState7 = -(randint (1, 3))
        # else:
         #    newState7 = (randint (1, 3))
-        return((state[0], state[1], state[2], newState3, state[4], state[5], state[6], state[7]))
+        return((state[0], state[1], state[2], newState3, state[4], state[5]))
     else:
         return(state)
 
@@ -118,8 +122,7 @@ def handleEvent(state, event):
 # The cat starts at the left, moving right
 
 initState = ((randint (125, 375)), (randint(1, 3)), (randint (125,
-375)), (randint(1, 3)), (randint (125, 375)), (randint(1, 3)),
-(randint (125, 375)), (randint(1, 3)))
+375)), (randint(1, 3)), height/2, (randint(1, 6))
 
 # Run the sixmulation no faster than 60 frames per second
 frameRate=60
@@ -127,4 +130,17 @@ frameRate=60
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
             endState, frameRate)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
