@@ -97,16 +97,19 @@ def handleEvent(state, event):
     if (event.type == pg.KEYDOWN):
         if (event.key == pg.K_UP):
             newState3 = state[3] - 1
+            return(state[0], state[1], state[2], newState3, state[4], state[5])
     if (event.type == pg.KEYDOWN):
         if (event.key == pg.K_DOWN):
             newState3 = state[3] + 1
+            return(state[0], state[1], state[2], newState3, state[4], state[5])
     if (event.type == pg.KEYDOWN):
         if (event.key == pg.K_w):
             newState5 = state[5] - 1
+            return(state[0], state[1], state[2], state[3], state[4], newState5)
     if (event.type == pg.KEYDOWN):
         if (event.key == pg.K_s):
             newState5 = state[5] + 1
-        return(state[0], state[1], state[2], newState3, state[4], newState5)
+            return(state[0], state[1], state[2], state[3], state[4], newState5)
     else:
         return(state)
 
@@ -120,7 +123,7 @@ initState = ((randint (125, 375)), (randint(1, 3)), (randint (125,
 375)), (randint(1, 3)), height/2, (randint(1, 3)))
 
 # Run the sixmulation no faster than 60 frames per second
-frameRate=60
+frameRate=30
 
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
