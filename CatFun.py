@@ -33,7 +33,7 @@ def updateState(state):
 
 # state -> bool
 def endState(state):
-    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (state[4] > height or state[4] < 0):
+    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (state[4] > height or state[4] < 0) or (((state[4] - 100) < state[2] < (state[4] + 100)) and (state[0] == 750)):
         return True
     else:
         return False
