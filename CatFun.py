@@ -33,12 +33,14 @@ def updateState(state):
 
 # state -> bool
 def endState(state):
-    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (state[4] > height or state[4] < 0) or (((state[4] - 100) < state[2] < (state[4] + 100)) and (state[0] == 750)):
-        return True
+    if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0):
+        return True, print("Hoop Wins!")
+    if state[4] > height or state[4] < 0:
+        return True, print("Ball Wins!")
+    if (((state[4] - 100) < state[2] < (state[4] + 100)) and (state[0] == 750)):
+        return True, print("Ball Wins!")
     else:
         return False
-    
-    
 ################################################################
 
 # state -> event -> state
