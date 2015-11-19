@@ -57,6 +57,8 @@ def handleEvent(state, event):
         if (event.key == pg.K_s):
             newState5 = state[5] + 1
             return(state[0], state[1], state[2], state[3], state[4], newState5)
+        else:
+            return(state)
     else:
         return(state)
 
