@@ -6,7 +6,7 @@ from random import randint
 ################################################################
 
 # Initialize world
-name = "Cat Fun. Press the mouse (but not too fast)!"
+name = "HoopsFun: Get the ball in the hoop!"
 width = 1000
 height = 700
 rw.newDisplay(width, height, name)
