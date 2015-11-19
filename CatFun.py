@@ -13,8 +13,8 @@ rw.newDisplay(width, height, name)
 
 ################################################################
 
-myimage = dw.loadImage("ball.bmp")
-secondimage = dw.loadImage("hoop.bmp")
+myimage = dw.loadImage("realball.bmp")
+secondimage = dw.loadImage("bballhoop.bmp")
 
 # state -> image (IO)
 def updateDisplay(state):
