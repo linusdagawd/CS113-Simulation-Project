@@ -18,7 +18,7 @@ secondimage = dw.loadImage("bballhoop.bmp")
 
 # state -> image (IO)
 def updateDisplay(state):
-    dw.fill(dw.black)
+    dw.fill(dw.blue)
     dw.draw(myimage, (state[0], state[2]))
     dw.draw(secondimage, (750, state[4]))
 
@@ -34,11 +34,11 @@ def updateState(state):
 # state -> bool
 def endState(state):
     if (state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0):
-        return True, print("Hoop Wins!")
+        return True, print("Hoop Wins! Suck it, ball")
     if state[4] > height or state[4] < 0:
-        return True, print("Ball Wins!")
-    if (((state[4] - 100) < state[2] < (state[4] + 100)) and (state[0] == 750)):
-        return True, print("Ball Wins!")
+        return True, print("Ball Wins! Suck it, hoop")
+    if (((state[4] - 80) < state[2] < (state[4] + 150)) and (750 <= state[0] <= 850)):
+        return True, print("Ball Wins! Suck it, hoop")
     else:
         return False
 ################################################################
@@ -66,7 +66,7 @@ def handleEvent(state, event):
 
 ################################################################
 
-initState = ((randint (125, 375)), (randint(1, 3)), (randint (125,
+initState = ((randint (125, 375)), (randint(2, 4)), (randint (125,
 375)), (randint(1, 3)), height/2, (randint(1, 3)))
 
 # Run the sixmulation no faster than 60 frames per second
