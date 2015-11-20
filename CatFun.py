@@ -2,7 +2,6 @@ import runWorld as rw
 import drawWorld as dw
 import pygame as pg
 from random import randint
-
 ################################################################
 
 # Initialize world
